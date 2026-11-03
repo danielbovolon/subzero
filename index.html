@@ -20,6 +20,7 @@
   --cream: #f6ead8;        /* warm daylight */
   --soft: #d4c2aa;         /* secondary text */
   --ember: #f2a54a;        /* the band of sunset */
+  --ice: #8fd6ff;          /* cold blue for the selected app */
   --rule: rgba(246, 234, 216, .26);
   --title: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --stretch: "Anybody", "Arial Narrow", Arial, sans-serif;
@@ -149,12 +150,12 @@ a.app {
   transition: transform .2s steps(3), color .15s;
 }
 a.app:hover .name, a.app:focus-visible .name {
-  color: var(--ember);
+  color: var(--ice);
   font-variation-settings: "wdth" 140, "wght" 800;
   animation: nudge .18s steps(2) 1;
 }
 a.app:hover .desc, a.app:focus-visible .desc { color: var(--cream); }
-a.app:hover .go, a.app:focus-visible .go { color: var(--ember); transform: translateX(8px); }
+a.app:hover .go, a.app:focus-visible .go { color: var(--ice); transform: translateX(8px); }
 a.app:focus-visible { outline: 1px dashed var(--ember); outline-offset: 4px; }
 @keyframes nudge { 0% { transform: translateX(0) } 50% { transform: translateX(-3px) skewX(-6deg) } 100% { transform: translateX(0) } }
 
