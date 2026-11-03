@@ -21,6 +21,8 @@
   --soft: #d4c2aa;         /* secondary text */
   --ember: #f2a54a;        /* the band of sunset */
   --ice: #8fd6ff;          /* cold blue for the selected app */
+  --fine: #cfe8ff;         /* pale ice blue for small text */
+  --halo: 0 1px 2px rgba(10,14,18,.9), 0 0 14px rgba(10,14,18,.65);
   --rule: rgba(246, 234, 216, .26);
   --title: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --stretch: "Anybody", "Arial Narrow", Arial, sans-serif;
@@ -72,8 +74,8 @@ nav.lang { display: flex; justify-content: flex-end; }
 nav.lang button {
   font: 400 11px/1 var(--mono);
   letter-spacing: .1em;
-  color: var(--soft);
-  background: rgba(20,24,29,.35);
+  color: var(--fine);
+  background: rgba(20,24,29,.55);
   border: 1px solid var(--rule);
   margin-left: -1px;
   border-radius: 0;
@@ -106,10 +108,10 @@ h1 {
 .intro {
   margin: 0;
   max-width: 44ch;
-  color: var(--cream);
-  font: 300 clamp(14px, 1.5vw, 16px)/1.65 var(--mono);
+  color: var(--fine);
+  font: 400 clamp(14px, 1.5vw, 16px)/1.65 var(--mono);
   letter-spacing: .01em;
-  text-shadow: 0 1px 12px rgba(20,24,29,.55);
+  text-shadow: var(--halo);
 }
 
 /* Instruments */
@@ -125,7 +127,7 @@ a.app {
   padding: 26px 4px;
   color: inherit;
   text-decoration: none;
-  cursor: crosshair;
+  cursor: pointer;
 }
 .name {
   font-family: var(--stretch);
@@ -139,14 +141,15 @@ a.app {
   transition: font-variation-settings .35s cubic-bezier(.2,.9,.2,1), color .15s;
 }
 .desc {
-  margin: 0; color: var(--soft);
-  font: 300 13px/1.7 var(--mono);
+  margin: 0; color: var(--fine);
+  font: 400 13px/1.7 var(--mono);
+  text-shadow: var(--halo);
   max-width: 60ch; min-width: 0;
   transition: color .15s;
 }
 .go {
   font: 400 14px/1 var(--mono);
-  color: var(--soft);
+  color: var(--fine);
   transition: transform .2s steps(3), color .15s;
 }
 a.app:hover .name, a.app:focus-visible .name {
@@ -163,7 +166,8 @@ footer {
   padding-top: 40px;
   display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
   font: 400 11px/1.5 var(--mono);
-  color: var(--soft);
+  color: var(--fine);
+  text-shadow: var(--halo);
   letter-spacing: .08em;
   text-transform: uppercase;
 }
