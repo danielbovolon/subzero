@@ -91,7 +91,9 @@ header {
   align-self: start;
   padding-block: clamp(48px, 12vh, 140px) clamp(64px, 16vh, 200px);
   display: grid; gap: 22px;
-  max-width: 40rem;
+  justify-items: center;
+  text-align: center;
+  width: 100%;
 }
 h1 {
   margin: 0;
@@ -107,12 +109,14 @@ h1 {
 }
 .intro {
   margin: 0;
-  max-width: 44ch;
+  max-width: 64ch;
+  text-wrap: balance;
   color: var(--fine);
   font: 400 clamp(14px, 1.5vw, 16px)/1.65 var(--mono);
   letter-spacing: .01em;
   text-shadow: var(--halo);
 }
+.intro .founded { display: block; white-space: nowrap; }
 
 /* Instruments */
 ul.apps { list-style: none; margin: 0; padding: 0; }
@@ -138,29 +142,27 @@ a.app {
   font-variation-settings: "wdth" 62, "wght" 700;
   text-transform: uppercase;
   letter-spacing: .01em;
-  transition: font-variation-settings .35s cubic-bezier(.2,.9,.2,1), color .15s;
+  transition: font-variation-settings .6s cubic-bezier(.25,.8,.25,1), color .4s ease;
 }
 .desc {
   margin: 0; color: var(--fine);
   font: 400 13px/1.7 var(--mono);
   text-shadow: var(--halo);
   max-width: 60ch; min-width: 0;
-  transition: color .15s;
+  transition: color .4s ease;
 }
 .go {
   font: 400 14px/1 var(--mono);
   color: var(--fine);
-  transition: transform .2s steps(3), color .15s;
+  transition: transform .5s cubic-bezier(.25,.8,.25,1), color .4s ease;
 }
 a.app:hover .name, a.app:focus-visible .name {
   color: var(--ice);
-  font-variation-settings: "wdth" 140, "wght" 800;
-  animation: nudge .18s steps(2) 1;
+  font-variation-settings: "wdth" 80, "wght" 720;
 }
 a.app:hover .desc, a.app:focus-visible .desc { color: var(--cream); }
-a.app:hover .go, a.app:focus-visible .go { color: var(--ice); transform: translateX(8px); }
+a.app:hover .go, a.app:focus-visible .go { color: var(--ice); transform: translateX(4px); }
 a.app:focus-visible { outline: 1px dashed var(--ember); outline-offset: 4px; }
-@keyframes nudge { 0% { transform: translateX(0) } 50% { transform: translateX(-3px) skewX(-6deg) } 100% { transform: translateX(0) } }
 
 footer {
   padding-top: 40px;
@@ -195,7 +197,7 @@ footer {
 
   <header>
     <h1>Subzero</h1>
-    <p class="intro" data-i18n="intro">Instruments for listening to, making and thinking about sound. Founded by Daniel Bovolon.</p>
+    <p class="intro"><span data-i18n="intro">Instruments for listening to, making and thinking about sound.</span> <span class="founded" data-i18n="founded">Founded by Daniel Bovolon.</span></p>
   </header>
 
   <main>
@@ -235,7 +237,8 @@ footer {
 (function () {
   var T = {
     en: {
-      intro: "Instruments for listening to, making and thinking about sound. Founded by Daniel Bovolon.",
+      intro: "Instruments for listening to, making and thinking about sound.",
+      founded: "Founded by Daniel Bovolon.",
       planetsound: "An open archive of the world's sound, with field recordings pinned to the place and time they were captured.",
       understory: "A sound forest that grows in your browser, where trees and fungi talk in 3D sound with your clock and the seasons.",
       wildtrack: "A daily brief for people who make sound: a seed idea, a photograph, a poem, something to listen to and news from every craft that meets audio.",
@@ -243,7 +246,8 @@ footer {
       soundbay: "A toolkit for sound professionals: calculators for acoustics, timing and levels, plus a measurement bench, sketch pad, notebook and planner."
     },
     de: {
-      intro: "Instrumente zum Hören, Gestalten und Nachdenken über Klang. Gegründet von Daniel Bovolon.",
+      intro: "Instrumente zum Hören, Gestalten und Nachdenken über Klang.",
+      founded: "Gegründet von Daniel Bovolon.",
       planetsound: "Ein offenes Archiv der Klänge der Welt: Feldaufnahmen, verortet an dem Ort und zu der Zeit, an dem sie entstanden sind.",
       understory: "Ein Klangwald, der im Browser wächst: Bäume und Pilze sprechen in 3D-Klang, im Rhythmus deiner Uhrzeit und der Jahreszeiten.",
       wildtrack: "Ein tägliches Briefing für alle, die Klang machen: ein Impuls, ein Foto, ein Gedicht, etwas zum Hören und Neues aus allen Disziplinen rund um Audio.",
@@ -251,7 +255,8 @@ footer {
       soundbay: "Ein Werkzeugkasten für Tonprofis: Rechner für Akustik, Timing und Pegel, dazu Messplatz, Skizzenblock, Notizbuch und Planer."
     },
     it: {
-      intro: "Strumenti per ascoltare, creare e pensare il suono. Fondato da Daniel Bovolon.",
+      intro: "Strumenti per ascoltare, creare e pensare il suono.",
+      founded: "Fondato da Daniel Bovolon.",
       planetsound: "Un archivio aperto dei suoni del mondo: registrazioni sul campo collocate nel luogo e nel momento in cui sono nate.",
       understory: "Una foresta sonora che cresce nel browser, dove alberi e funghi dialogano in suono 3D seguendo l'ora e le stagioni.",
       wildtrack: "Un brief quotidiano per chi crea suono: uno spunto, una fotografia, una poesia, qualcosa da ascoltare e notizie da ogni disciplina che incontra l'audio.",
