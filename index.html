@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Subzero · Daniel Bovolon</title>
-<meta name="description" content="Subzero by Daniel Bovolon: places for listening, making and thinking about sound.">
+<meta name="description" content="Subzero: instruments for listening to, making and thinking about sound. Founded by Daniel Bovolon.">
 <meta name="theme-color" content="#1c2229">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Karla:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: the photo is the room. Name and intro sit in the sky, the apps rest on the dark ridge below. */
 :root {
@@ -17,8 +17,9 @@
   --soft: #d9c7b0;         /* secondary text */
   --ember: #f2a54a;        /* the band of sunset */
   --rule: rgba(246, 234, 216, .22);
-  --display: "Fraunces", Georgia, "Times New Roman", serif;
-  --body: "Karla", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
   color-scheme: dark;
 }
 
@@ -30,7 +31,7 @@ body {
   min-height: 100dvh;
   color: var(--cream);
   background: var(--ink);
-  font: 400 17px/1.6 var(--body);
+  font: 400 16px/1.6 var(--body);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -63,13 +64,13 @@ body {
 /* Language switch */
 nav.lang { display: flex; justify-content: flex-end; gap: 4px; }
 nav.lang button {
-  font: 500 12px/1 var(--body);
-  letter-spacing: .14em;
+  font: 400 12px/1 var(--mono);
+  letter-spacing: .08em;
   color: var(--soft);
   background: transparent;
   border: 1px solid transparent;
-  border-radius: 999px;
-  padding: 8px 12px;
+  border-radius: 0;
+  padding: 8px 10px;
   cursor: pointer;
   transition: color .2s, border-color .2s;
 }
@@ -85,9 +86,8 @@ header {
 }
 h1 {
   margin: 0;
-  font: 300 clamp(56px, 12vw, 128px)/.9 var(--display);
-  font-variation-settings: "opsz" 144;
-  letter-spacing: -0.025em;
+  font: 300 clamp(52px, 11vw, 120px)/.92 var(--display);
+  letter-spacing: -0.035em;
   text-shadow: 0 2px 30px rgba(20,24,29,.35);
 }
 .by {
@@ -97,9 +97,9 @@ h1 {
 }
 .intro {
   margin: 0;
-  max-width: 40ch;
+  max-width: 38ch;
   color: var(--cream);
-  font-size: 18px;
+  font: 300 clamp(18px, 2vw, 21px)/1.5 var(--body);
   text-shadow: 0 1px 12px rgba(20,24,29,.45);
 }
 
@@ -117,13 +117,13 @@ a.app {
   text-decoration: none;
 }
 .name {
-  font: 400 clamp(26px, 3vw, 32px)/1.1 var(--display);
-  font-variation-settings: "opsz" 72;
+  font: 400 clamp(22px, 2.4vw, 26px)/1.2 var(--display);
+  letter-spacing: -0.01em;
   transition: color .25s;
 }
-.desc { margin: 0; color: var(--soft); max-width: 58ch; min-width: 0; transition: color .25s; }
+.desc { margin: 0; color: var(--soft); font-size: 15px; line-height: 1.6; max-width: 58ch; min-width: 0; transition: color .25s; }
 .go {
-  font: 400 22px/1 var(--display);
+  font: 400 18px/1 var(--mono);
   color: var(--soft);
   transition: transform .25s, color .25s;
 }
@@ -134,7 +134,7 @@ a.app:focus-visible { outline: 2px solid var(--ember); outline-offset: 4px; bord
 
 footer {
   padding-top: 40px;
-  font-size: 13px;
+  font: 400 12px/1.5 var(--mono);
   color: var(--soft);
   letter-spacing: .04em;
 }
@@ -162,8 +162,7 @@ footer {
 
   <header>
     <h1>Subzero</h1>
-    <p class="by">Daniel Bovolon</p>
-    <p class="intro" data-i18n="intro">A small collection of places for listening to, making and thinking about sound.</p>
+    <p class="intro" data-i18n="intro">Instruments for listening to, making and thinking about sound. Founded by Daniel Bovolon.</p>
   </header>
 
   <main>
@@ -203,7 +202,7 @@ footer {
 (function () {
   var T = {
     en: {
-      intro: "A small collection of places for listening to, making and thinking about sound.",
+      intro: "Instruments for listening to, making and thinking about sound. Founded by Daniel Bovolon.",
       planetsound: "An open archive of the world's sound, with field recordings pinned to the place and time they were captured.",
       understory: "A sound forest that grows in your browser, where trees and fungi talk in 3D sound with your clock and the seasons.",
       wildtrack: "A daily brief for people who make sound: a seed idea, a photograph, a poem, something to listen to and news from every craft that meets audio.",
@@ -211,7 +210,7 @@ footer {
       soundbay: "A toolkit for sound professionals: calculators for acoustics, timing and levels, plus a measurement bench, sketch pad, notebook and planner."
     },
     de: {
-      intro: "Eine kleine Sammlung von Orten zum Hören, Gestalten und Nachdenken über Klang.",
+      intro: "Instrumente zum Hören, Gestalten und Nachdenken über Klang. Gegründet von Daniel Bovolon.",
       planetsound: "Ein offenes Archiv der Klänge der Welt: Feldaufnahmen, verortet an dem Ort und zu der Zeit, an dem sie entstanden sind.",
       understory: "Ein Klangwald, der im Browser wächst: Bäume und Pilze sprechen in 3D-Klang, im Rhythmus deiner Uhrzeit und der Jahreszeiten.",
       wildtrack: "Ein tägliches Briefing für alle, die Klang machen: ein Impuls, ein Foto, ein Gedicht, etwas zum Hören und Neues aus allen Disziplinen rund um Audio.",
@@ -219,7 +218,7 @@ footer {
       soundbay: "Ein Werkzeugkasten für Tonprofis: Rechner für Akustik, Timing und Pegel, dazu Messplatz, Skizzenblock, Notizbuch und Planer."
     },
     it: {
-      intro: "Una piccola raccolta di luoghi per ascoltare, creare e pensare il suono.",
+      intro: "Strumenti per ascoltare, creare e pensare il suono. Fondato da Daniel Bovolon.",
       planetsound: "Un archivio aperto dei suoni del mondo: registrazioni sul campo collocate nel luogo e nel momento in cui sono nate.",
       understory: "Una foresta sonora che cresce nel browser, dove alberi e funghi dialogano in suono 3D seguendo l'ora e le stagioni.",
       wildtrack: "Un brief quotidiano per chi crea suono: uno spunto, una fotografia, una poesia, qualcosa da ascoltare e notizie da ogni disciplina che incontra l'audio.",
