@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Subzero · Daniel Bovolon</title>
+<meta name="description" content="Subzero by Daniel Bovolon: places for listening, making and thinking about sound.">
+<meta name="theme-color" content="#1c2229">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Karla:wght@400;500&display=swap">
+<style>
+/* Layout: the photo is the room. Name and intro sit in the sky, the apps rest on the dark ridge below. */
+:root {
+  --ink: #1c2229;          /* night slate from the photo */
+  --cream: #f6ead8;        /* text, warm daylight */
+  --soft: #d9c7b0;         /* secondary text */
+  --ember: #f2a54a;        /* the band of sunset */
+  --rule: rgba(246, 234, 216, .22);
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Karla", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--ink); }
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  color: var(--cream);
+  background: var(--ink);
+  font: 400 17px/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Photo fixed behind everything (works on iOS, unlike background-attachment: fixed) */
+.sky {
+  position: fixed; inset: 0; z-index: 0;
+  background: url("background.jpg") center 62% / cover no-repeat var(--ink);
+}
+.sky::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(120% 70% at 50% 58%, rgba(242,165,74,.10), transparent 60%),
+    linear-gradient(to bottom, rgba(28,34,41,.30) 0%, rgba(28,34,41,.05) 40%, rgba(20,24,29,.55) 70%, rgba(20,24,29,.88) 100%);
+}
+
+.page {
+  position: relative; z-index: 1;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-top: max(24px, env(safe-area-inset-top, 0px));
+  padding-bottom: max(28px, env(safe-area-inset-bottom, 0px));
+  padding-left: max(24px, env(safe-area-inset-left, 0px));
+  padding-right: max(24px, env(safe-area-inset-right, 0px));
+}
+
+/* Language switch */
+nav.lang { display: flex; justify-content: flex-end; gap: 4px; }
+nav.lang button {
+  font: 500 12px/1 var(--body);
+  letter-spacing: .14em;
+  color: var(--soft);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: color .2s, border-color .2s;
+}
+nav.lang button:hover { color: var(--cream); }
+nav.lang button[aria-pressed="true"] { color: var(--cream); border-color: var(--rule); }
+nav.lang button:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
+
+header {
+  align-self: start;
+  padding-block: clamp(48px, 12vh, 140px) clamp(64px, 16vh, 200px);
+  display: grid; gap: 20px;
+  max-width: 34rem;
+}
+h1 {
+  margin: 0;
+  font: 300 clamp(56px, 12vw, 128px)/.9 var(--display);
+  font-variation-settings: "opsz" 144;
+  letter-spacing: -0.025em;
+  text-shadow: 0 2px 30px rgba(20,24,29,.35);
+}
+.by {
+  margin: 0;
+  font: 400 italic clamp(19px, 2.4vw, 24px)/1.3 var(--display);
+  color: var(--cream);
+}
+.intro {
+  margin: 0;
+  max-width: 40ch;
+  color: var(--cream);
+  font-size: 18px;
+  text-shadow: 0 1px 12px rgba(20,24,29,.45);
+}
+
+/* Apps */
+ul.apps { list-style: none; margin: 0; padding: 0; }
+ul.apps li { border-top: 1px solid var(--rule); }
+ul.apps li:last-child { border-bottom: 1px solid var(--rule); }
+a.app {
+  display: grid;
+  grid-template-columns: minmax(10rem, 15rem) 1fr auto;
+  align-items: baseline;
+  gap: 6px 32px;
+  padding: 26px 4px;
+  color: inherit;
+  text-decoration: none;
+}
+.name {
+  font: 400 clamp(26px, 3vw, 32px)/1.1 var(--display);
+  font-variation-settings: "opsz" 72;
+  transition: color .25s;
+}
+.desc { margin: 0; color: var(--soft); max-width: 58ch; min-width: 0; transition: color .25s; }
+.go {
+  font: 400 22px/1 var(--display);
+  color: var(--soft);
+  transition: transform .25s, color .25s;
+}
+a.app:hover .name, a.app:focus-visible .name { color: var(--ember); }
+a.app:hover .desc, a.app:focus-visible .desc { color: var(--cream); }
+a.app:hover .go, a.app:focus-visible .go { color: var(--ember); transform: translateX(6px); }
+a.app:focus-visible { outline: 2px solid var(--ember); outline-offset: 4px; border-radius: 2px; }
+
+footer {
+  padding-top: 40px;
+  font-size: 13px;
+  color: var(--soft);
+  letter-spacing: .04em;
+}
+
+@media (max-width: 640px) {
+  a.app { grid-template-columns: 1fr auto; padding: 22px 2px; }
+  .desc { grid-column: 1 / -1; }
+  header { padding-block: 40px 96px; }
+  .sky { background-position: 58% 60%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true"></div>
+
+<div class="page">
+  <nav class="lang" aria-label="Language">
+    <button type="button" data-lang="de">DE</button>
+    <button type="button" data-lang="it">IT</button>
+    <button type="button" data-lang="en">EN</button>
+  </nav>
+
+  <header>
+    <h1>Subzero</h1>
+    <p class="by">Daniel Bovolon</p>
+    <p class="intro" data-i18n="intro">A small collection of places for listening to, making and thinking about sound.</p>
+  </header>
+
+  <main>
+    <ul class="apps">
+      <li><a class="app" href="https://planetsound.danielbovolon.com">
+        <span class="name">Planet Sound</span>
+        <p class="desc" data-i18n="planetsound">An open archive of the world's sound, with field recordings pinned to the place and time they were captured.</p>
+        <span class="go" aria-hidden="true">→</span>
+      </a></li>
+      <li><a class="app" href="https://understory.danielbovolon.com">
+        <span class="name">Understory</span>
+        <p class="desc" data-i18n="understory">A sound forest that grows in your browser, where trees and fungi talk in 3D sound with your clock and the seasons.</p>
+        <span class="go" aria-hidden="true">→</span>
+      </a></li>
+      <li><a class="app" href="https://wildtrack.danielbovolon.com">
+        <span class="name">Wildtrack</span>
+        <p class="desc" data-i18n="wildtrack">A daily brief for people who make sound: a seed idea, a photograph, a poem, something to listen to and news from every craft that meets audio.</p>
+        <span class="go" aria-hidden="true">→</span>
+      </a></li>
+      <li><a class="app" href="https://talkback.danielbovolon.com">
+        <span class="name">Talkback</span>
+        <p class="desc" data-i18n="talkback">The control room edition of Wildtrack, its sister brief.</p>
+        <span class="go" aria-hidden="true">→</span>
+      </a></li>
+      <li><a class="app" href="https://soundbay.danielbovolon.com">
+        <span class="name">Soundbay</span>
+        <p class="desc" data-i18n="soundbay">A toolkit for sound professionals: calculators for acoustics, timing and levels, plus a measurement bench, sketch pad, notebook and planner.</p>
+        <span class="go" aria-hidden="true">→</span>
+      </a></li>
+    </ul>
+  </main>
+
+  <footer>© 2026 Daniel Bovolon</footer>
+</div>
+
+<script>
+(function () {
+  var T = {
+    en: {
+      intro: "A small collection of places for listening to, making and thinking about sound.",
+      planetsound: "An open archive of the world's sound, with field recordings pinned to the place and time they were captured.",
+      understory: "A sound forest that grows in your browser, where trees and fungi talk in 3D sound with your clock and the seasons.",
+      wildtrack: "A daily brief for people who make sound: a seed idea, a photograph, a poem, something to listen to and news from every craft that meets audio.",
+      talkback: "The control room edition of Wildtrack, its sister brief.",
+      soundbay: "A toolkit for sound professionals: calculators for acoustics, timing and levels, plus a measurement bench, sketch pad, notebook and planner."
+    },
+    de: {
+      intro: "Eine kleine Sammlung von Orten zum Hören, Gestalten und Nachdenken über Klang.",
+      planetsound: "Ein offenes Archiv der Klänge der Welt: Feldaufnahmen, verortet an dem Ort und zu der Zeit, an dem sie entstanden sind.",
+      understory: "Ein Klangwald, der im Browser wächst: Bäume und Pilze sprechen in 3D-Klang, im Rhythmus deiner Uhrzeit und der Jahreszeiten.",
+      wildtrack: "Ein tägliches Briefing für alle, die Klang machen: ein Impuls, ein Foto, ein Gedicht, etwas zum Hören und Neues aus allen Disziplinen rund um Audio.",
+      talkback: "Die Regieraum-Ausgabe von Wildtrack, ihr Schwester-Briefing.",
+      soundbay: "Ein Werkzeugkasten für Tonprofis: Rechner für Akustik, Timing und Pegel, dazu Messplatz, Skizzenblock, Notizbuch und Planer."
+    },
+    it: {
+      intro: "Una piccola raccolta di luoghi per ascoltare, creare e pensare il suono.",
+      planetsound: "Un archivio aperto dei suoni del mondo: registrazioni sul campo collocate nel luogo e nel momento in cui sono nate.",
+      understory: "Una foresta sonora che cresce nel browser, dove alberi e funghi dialogano in suono 3D seguendo l'ora e le stagioni.",
+      wildtrack: "Un brief quotidiano per chi crea suono: uno spunto, una fotografia, una poesia, qualcosa da ascoltare e notizie da ogni disciplina che incontra l'audio.",
+      talkback: "L'edizione regia di Wildtrack, il suo brief gemello.",
+      soundbay: "Una cassetta degli attrezzi per professionisti del suono: calcolatori per acustica, tempi e livelli, più banco di misura, blocco per schizzi, taccuino e planner."
+    }
+  };
+
+  function setLang(lang) {
+    if (!T[lang]) lang = "en";
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      el.textContent = T[lang][el.getAttribute("data-i18n")];
+    });
+    document.querySelectorAll("nav.lang button").forEach(function (b) {
+      b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false");
+    });
+    try { localStorage.setItem("subzero-lang", lang); } catch (e) {}
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem("subzero-lang"); } catch (e) {}
+  var browser = (navigator.language || "en").slice(0, 2).toLowerCase();
+  setLang(saved || (T[browser] ? browser : "en"));
+
+  document.querySelectorAll("nav.lang button").forEach(function (b) {
+    b.addEventListener("click", function () { setLang(b.getAttribute("data-lang")); });
+  });
+})();
+</script>
+</body>
+</html>
