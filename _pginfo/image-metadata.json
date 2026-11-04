@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "assets": {
+    "image-mw1v042b-jznvl683cxn": {
+      "id": "image-mw1v042b-jznvl683cxn",
+      "source": "url:https://pinegrow.com/placeholders/img10.jpg",
+      "remembered": {},
+      "suggestions": {},
+      "revision": "sha256:dd73f87f960b6a24d17861872b456592cda501cb3b57552cf343d3f6ef44a22c",
+      "available": true
+    },
+    "image-mw1v1hvx-6ybn7uq7tm": {
+      "id": "image-mw1v1hvx-6ybn7uq7tm",
+      "source": "url:https://pinegrow.com/placeholders/img13.jpg",
+      "remembered": {},
+      "suggestions": {},
+      "revision": "sha256:936c39b17c74ee0861cc6cd93828277b3bcc639f3c8a4f2fa9f02a29fe81301b",
+      "available": true
+    },
+    "image-mw1v1y0v-2b19gi2vwz3": {
+      "id": "image-mw1v1y0v-2b19gi2vwz3",
+      "source": "project:planetsound.png",
+      "remembered": {},
+      "suggestions": {},
+      "revision": "sha256:1c2adbd232c247301268c6688c701892f4417eb940d656001acafa80ab15ce94",
+      "available": true
+    }
+  },
+  "sources": {
+    "url:https://pinegrow.com/placeholders/img10.jpg": {
+      "asset": "image-mw1v042b-jznvl683cxn",
+      "kind": "original",
+      "cropToken": null
+    },
+    "url:https://pinegrow.com/placeholders/img13.jpg": {
+      "asset": "image-mw1v1hvx-6ybn7uq7tm",
+      "kind": "original",
+      "cropToken": null
+    },
+    "project:planetsound.png": {
+      "asset": "image-mw1v1y0v-2b19gi2vwz3",
+      "kind": "original"
+    },
+    "project:planetsound.w975-h975-c706_488.jpg": {
+      "asset": "image-mw1v1y0v-2b19gi2vwz3",
+      "kind": "crop",
+      "cropToken": "706_488"
+    },
+    "project:planetsound.w400-h400-c1.jpg": {
+      "asset": "image-mw1v1y0v-2b19gi2vwz3",
+      "kind": "crop",
+      "cropToken": "1"
+    }
+  }
+}
